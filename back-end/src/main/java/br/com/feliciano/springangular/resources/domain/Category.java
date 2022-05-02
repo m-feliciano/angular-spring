@@ -4,35 +4,36 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.AccessLevel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
 @Entity
 @Table(name = "tb_category")
-public class Category implements Serializable {
+public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Setter(value = AccessLevel.PRIVATE)
 	private Integer id;
+	@Column(length = 200, nullable = false)
 	private String name;
 
-    @ManyToMany(mappedBy = "categories", cascade = CascadeType.ALL)
-    private transient List<Course> courses = new ArrayList<>();
+	@JsonIgnore // deny serialization
+	@OneToMany(mappedBy = "category")
+	private List<Course> courses = new ArrayList<>();
 
 	public Category(Integer id, String name) {
 		this.id = id;
@@ -41,6 +42,19 @@ public class Category implements Serializable {
 
 	public Category(String name) {
 		this.name = name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", name=" + name + "]";
 	}
 
 	@Override

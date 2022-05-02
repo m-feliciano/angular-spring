@@ -1,5 +1,7 @@
 package br.com.feliciano.springangular.services;
 
+import java.util.Arrays;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Service;
@@ -22,53 +24,36 @@ public class DBService {
 
 	public void instantiateTestDatabase() throws ParseException {
 
-		Category cat1 = new Category("Front-End");
-		Category cat2 = new Category("Back-End");
-		Category cat3 = new Category("DevOps");
-		Category cat4 = new Category("Data Science");
+		Category cat1 = new Category(null,"Front-End");
+		Category cat2 = new Category(null,"Back-End");
+		Category cat3 = new Category(null,"DevOps");
+		Category cat4 = new Category(null,"Data Science");
 
-		Course c1 = new Course("Java");
-		Course c2 = new Course("Javascript");
-		Course c3 = new Course("AWS");
-		Course c4 = new Course("REGEXP");
-		Course c5 = new Course("PHP");
-		Course c6 = new Course("Oracle SQL");
-		Course c7 = new Course("NoSQL");
-		Course c8 = new Course("Angular");
+		Course c1 = new Course(null,"Java", cat2);
+		Course c2 = new Course(null,"Javascript", cat1);
+		Course c3 = new Course(null,"AWS", cat3);
+		Course c4 = new Course(null,"REGEXP", cat1);
+		Course c5 = new Course(null,"PHP" ,cat1);
+		Course c6 = new Course(null,"Oracle SQL", cat4);
+		Course c7 = new Course(null,"NoSQL", cat4);
+		Course c8 = new Course(null,"Angular", cat1);
 
-		c1.addCategory(cat2);
-		c2.addCategory(cat1);
-		c3.addCategory(cat3);
-		c4.addCategory(cat1);
-		c5.addCategory(cat2);
-		c6.addCategory(cat4);
-		c7.addCategory(cat4);
-		c8.addCategory(cat1);
+//		c1.setCategory(cat2);
+//		c2.setCategory(cat1);
+//		c3.setCategory(cat3);
+//		c4.setCategory(cat1);
+//		c5.setCategory(cat1);
+//		c6.setCategory(cat4);
+//		c7.setCategory(cat4);
+//		c8.setCategory(cat1);
+		
+		cat1.getCourses().addAll(Arrays.asList(c2, c4, c5, c8));
+		cat2.getCourses().add(c1);
+		cat3.getCourses().add(c3);
+		cat4.getCourses().addAll(Arrays.asList(c6, c7));
 
-		categoryRepository.save(cat2);
-		courseRepository.save(c1);
-
-		categoryRepository.save(cat1);
-		courseRepository.save(c2);
-
-		categoryRepository.save(cat3);
-		courseRepository.save(c3);
-
-		categoryRepository.save(cat1);
-		courseRepository.save(c4);
-
-		categoryRepository.save(cat2);
-		courseRepository.save(c5);
-
-		categoryRepository.save(cat4);
-		courseRepository.save(c6);
-
-		categoryRepository.save(cat4);
-		courseRepository.save(c7);
-
-		categoryRepository.save(cat1);
-		courseRepository.save(c8);
-
+		categoryRepository.saveAll(Arrays.asList(cat1, cat2, cat3, cat4));
+		courseRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8));
 	}
 
 }

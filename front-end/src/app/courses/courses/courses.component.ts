@@ -25,7 +25,7 @@ export class CoursesComponent implements OnInit {
         catchError(() => {
          this.onError("Error on loading courses.");
           return of([]);
-        }) 
+        })
       )
    }
 
