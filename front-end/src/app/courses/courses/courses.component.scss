@@ -6,6 +6,16 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0,0,0, 0.05);
+  background:rgba(0,0,0, 0.05);
   padding: 2rem;
+}
+
+.courses-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.courses-container-title {
+  text-align: center;
+  justify-content: center;
 }

@@ -1,0 +1,26 @@
+mat-card {
+  text-align: center;
+}
+
+.full-width {
+  display: block;
+}
+
+.mt-2 {
+  margin-top: 20px;
+}
+
+.form-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.form-container mat-toolbar {
+  text-align: center;
+  justify-content: center;
+}
+
+.min-width {
+  width: 100%;
+  min-width: 150px;
+}

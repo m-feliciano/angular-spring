@@ -21,7 +21,7 @@ export class CoursesService {
       .get<Course[]>(url)
       .pipe(
         delay(2000),
-        tap(courses => console.log(courses[0]))
+        tap(courses => console.log(courses))
       );
   }
 }
