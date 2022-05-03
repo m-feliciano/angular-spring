@@ -13,8 +13,6 @@ public class CategoryDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
-	@NotEmpty(message = "Mandatory completion")
-	@Length(min = 4, max = 20, message = "The category '${validatedValue}' must be between {min} and {max} characters")
 	private String name;
 	
 	public CategoryDTO(Category obj) {

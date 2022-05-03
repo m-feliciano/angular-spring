@@ -12,16 +12,27 @@ export class CoursesService {
   // private readonly API = "/assets/courses.json";
 
   private readonly API = API_CONFIG.baseUrl;
+  private readonly courseUrl = this.API + "courses";
 
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    const url = this.API + "courses";
     return this.httpClient
-      .get<Course[]>(url)
+      .get<Course[]>(this.courseUrl)
       .pipe(
         delay(2000),
         tap(courses => console.log(courses))
       );
+  }
+
+  save(record: Course) {
+    const obj = {
+      name: record.name,
+      category: {
+        name: record.category
+      }
+    }
+    console.log(obj);
+    return this.httpClient.post<Course>(this.courseUrl, obj);
   }
 }

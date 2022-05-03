@@ -37,15 +37,6 @@ public class DBService {
 		Course c6 = new Course(null,"Oracle SQL", cat4);
 		Course c7 = new Course(null,"NoSQL", cat4);
 		Course c8 = new Course(null,"Angular", cat1);
-
-//		c1.setCategory(cat2);
-//		c2.setCategory(cat1);
-//		c3.setCategory(cat3);
-//		c4.setCategory(cat1);
-//		c5.setCategory(cat1);
-//		c6.setCategory(cat4);
-//		c7.setCategory(cat4);
-//		c8.setCategory(cat1);
 		
 		cat1.getCourses().addAll(Arrays.asList(c2, c4, c5, c8));
 		cat2.getCourses().add(c1);

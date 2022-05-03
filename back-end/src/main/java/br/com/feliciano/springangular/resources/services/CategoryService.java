@@ -61,9 +61,20 @@ public class CategoryService {
 	public List<Category> findAll() {
 		return categoryRepository.findAll();
 	}
+	
+	public Category findByNameIgnoreCase(String name) {
+		Optional<Category> obj = categoryRepository
+				.findByNameIgnoreCase(name);
+		return obj.orElseThrow(() -> 
+		new ObjectNotFoundException("Object not found! Name: "
+				+ name + ", Type: " + Category.class.getName()));
+	}
 
-	public Page<Category> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
-		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
+	public Page<Category> findPage(Integer page, Integer linesPerPage, 
+			String orderBy, String direction) {
+		PageRequest pageRequest = PageRequest
+				.of(page, linesPerPage, 
+						Direction.valueOf(direction), orderBy);
 		return categoryRepository.findAll(pageRequest);
 
 	}

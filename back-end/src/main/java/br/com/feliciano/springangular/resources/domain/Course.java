@@ -31,13 +31,19 @@ public class Course {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-	public Course(int id, String name) {
+	public Course(Integer id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public void setId(int id) {
+	public Course(String name, Category category) {
+		super();
+		this.name = name;
+		this.category = category;
+	}
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
