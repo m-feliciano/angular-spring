@@ -3,6 +3,7 @@ package br.com.feliciano.springangular.resources.dto;
 import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -20,10 +21,11 @@ public class CourseNewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@NotEmpty(message = "Mandatory completion")
-	@Length(min = 5, max = 100, message = "The client '${validatedValue}' must be between {min} and {max} characters")
+	@NotEmpty(message = "Mandatory completion.")
+	@Length(min = 5, max = 100, message = "The client '${validatedValue}' must be between {min} and {max} characters.")
 	private String name;
-	@NotEmpty(message = "Mandatory completion")
+
+	@NotNull(message = "Must provide a valid category.")
 	private Category category;
 
 }

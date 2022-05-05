@@ -3,6 +3,8 @@ package br.com.feliciano.springangular.resources;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +44,7 @@ public class CourseResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody CourseNewDTO objDto) { // @RequestBody converts 
+	public ResponseEntity<Void> insert(@RequestBody @Valid CourseNewDTO objDto) { // @RequestBody converts 
 		// JSON to object body
 		Course obj = courseService.fromDTO(objDto);
 		obj = courseService.insert(obj);

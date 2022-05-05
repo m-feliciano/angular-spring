@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.feliciano.springangular.repositories.CategoryRepository;
 import br.com.feliciano.springangular.repositories.CourseRepository;
 import br.com.feliciano.springangular.resources.domain.Category;
 import br.com.feliciano.springangular.resources.domain.Course;
@@ -48,8 +47,9 @@ public class CourseService {
 	}
 
 	public Course fromDTO(CourseNewDTO objDto) {
-		String categoryName = objDto.getCategory().getName();
-		Category cat = categoryService.findByNameIgnoreCase(categoryName);
+		String catName = objDto.getCategory().getName();
+		Category cat = categoryService
+				.findByNameIgnoreCase(catName);
 		return new Course(objDto.getName(), cat);
 	}
 
