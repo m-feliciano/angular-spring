@@ -10,7 +10,6 @@ import { API_CONFIG } from '../../../config/api.config';
 export class CoursesService {
 
   // private readonly API = "/assets/courses.json";
-
   private readonly API = API_CONFIG.baseUrl;
   private readonly courseUrl = this.API + "courses";
 
@@ -32,7 +31,6 @@ export class CoursesService {
         name: record.category
       }
     }
-    console.log(obj);
     return this.httpClient.post<Course>(this.courseUrl, obj);
   }
 }
